@@ -27,7 +27,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
     if (tz === 'HT') {
       this.timeZone = 'HT';
-      this.fullTimeZone = "Hawaii Time Zone"
+      this.fullTimeZone = "Hawaii-Aleutian Time Zone"
       this.getTime();
     }
     else if (tz === 'AKT') {
