@@ -11,6 +11,7 @@ export class AppComponent implements OnInit, OnDestroy {
   fullTimeZone = null;
   timer = null;
   message = null;
+  mapImagePath = 'assets/images/timezonemap.gif'
   tzOffset = this.currentTime.getTimezoneOffset();
 
   updateTime() {

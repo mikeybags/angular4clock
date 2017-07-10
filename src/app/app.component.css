@@ -6,8 +6,28 @@ h2 {
     margin-right: 20px;
 }
 
-.selected { 
+.et { 
     background-color: yellow!important;
+}
+
+.ct { 
+    background-color: green!important;
+}
+
+.mt { 
+    background-color: dodgerblue!important;
+}
+
+.pt { 
+    background-color: red!important;
+}
+
+.akt { 
+    background-color: purple!important;
+}
+
+.ht { 
+    background-color: orange!important;
 }
 
 .time-display {
@@ -16,4 +36,8 @@ h2 {
 
 .message {
     margin-top: 15px;
+}
+
+.map-img {
+    margin: 10px auto;
 }

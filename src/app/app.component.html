@@ -4,30 +4,33 @@
     <button class="btn btn-default tz-btn" 
     name="pst" 
     (click)="setTimeZone('HT')"
-    [ngClass]="{ selected: timeZone === 'HT' }">Hawaii</button>
+    [ngClass]="{ ht: timeZone === 'HT' }">Hawaii</button>
     <button class="btn btn-default tz-btn" 
     name="pst" 
     (click)="setTimeZone('AKT')"
-    [ngClass]="{ selected: timeZone === 'AKT' }">Alaska</button>
+    [ngClass]="{ akt: timeZone === 'AKT' }">Alaska</button>
     <button class="btn btn-default tz-btn" 
     name="pst" 
     (click)="setTimeZone('PT')"
-    [ngClass]="{ selected: timeZone === 'PT' }">Pacific</button>
+    [ngClass]="{ pt: timeZone === 'PT' }">Pacific</button>
     <button class="btn btn-default tz-btn" 
     name="mst" 
     (click)="setTimeZone('MT')"
-    [ngClass]="{ selected: timeZone === 'MT' }">Mountain</button>
+    [ngClass]="{ mt: timeZone === 'MT' }">Mountain</button>
     <button class="btn btn-default tz-btn" 
     name="cst" 
     (click)="setTimeZone('CT')"
-    [ngClass]="{ selected: timeZone === 'CT' }">Central</button>
+    [ngClass]="{ ct: timeZone === 'CT' }">Central</button>
     <button class="btn btn-default tz-btn" 
     name="est" 
     (click)="setTimeZone('ET')"
-    [ngClass]="{ selected: timeZone === 'ET' }">Eastern</button>
+    [ngClass]="{ et: timeZone === 'ET' }">Eastern</button>
     <button class="btn btn-default tz-btn" 
     name="clear" 
     (click)="reset()">Clear</button>
+  </div>
+  <div class="message text-center" *ngIf="message">
+    <h4 class="text-warning">{{ message }}</h4>
   </div>
   <div class="time-display text-center" *ngIf="currentTime">
     <h4>It is currently</h4>
@@ -37,7 +40,7 @@
     <div class="time-display text-center" *ngIf="!currentTime">
     <h4 class="text-info">Time cleared. Choose a time zone to display current time in that time zone.</h4>
   </div>
-  <div class="message text-center" *ngIf="message">
-    <h4 class="text-warning">{{ message }}</h4>
+  <div class="text-center">
+    <img src={{mapImagePath}} alt="US Time Zone Map">
   </div>
 </div>
