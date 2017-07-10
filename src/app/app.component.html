@@ -22,7 +22,12 @@
     (click)="reset()">Clear</button>
   </div>
   <br />
-  <h4 class="text-center">It is currently</h4>
-  <h2 class="text-center">{{ currentTime | date: 'medium' }}</h2>
-  <h4 class="text-center">in the {{ fullTimeZone }}.</h4>
+  <div class="text-center" *ngIf="currentTime">
+    <h4>It is currently</h4>
+    <h2>{{ currentTime | date: 'medium' }}</h2>
+    <h4>in the {{ fullTimeZone }}.</h4>
+  </div>
+    <div class="text-center" *ngIf="!currentTime">
+    <h4>Time cleared. Choose a time zone to display current time in that time zone.</h4>
+  </div>
 </div>

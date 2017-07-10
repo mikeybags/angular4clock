@@ -62,6 +62,7 @@ export class AppComponent implements OnInit, OnDestroy {
   reset() {
     this.currentTime = null;
     this.timeZone = null;
+    this.fullTimeZone = null;
     clearInterval(this.timer);
   }
 
