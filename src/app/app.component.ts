@@ -12,7 +12,7 @@ export class AppComponent implements OnInit, OnDestroy {
   timer = null;
   message = null;
   mapImagePath = 'assets/images/timezonemap.gif'
-  tzOffset = this.currentTime.getTimezoneOffset();
+  tzOffsetHours = this.currentTime.getTimezoneOffset() / 60;
 
   updateTime() {
     this.getTime();
@@ -57,29 +57,31 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
+  getUTCTime() {
+    this.tzOffsetHours = this.currentTime.getTimezoneOffset() / 60
+    this.currentTime.setHours(this.currentTime.getHours() + this.tzOffsetHours )
+  }
+
   getTime() {
+    this.currentTime = new Date();
+    this.getUTCTime();
     if (this.timeZone ==='HT') {
-      this.currentTime = new Date();
-      this.currentTime.setHours(this.currentTime.getHours() - 5 )
+      this.currentTime.setHours(this.currentTime.getHours() - 10 )
     }    
     else if (this.timeZone ==='AKT') {
-      this.currentTime = new Date();
-      this.currentTime.setHours(this.currentTime.getHours() - 3 )
+      this.currentTime.setHours(this.currentTime.getHours() - 8 )
     }    
     else if (this.timeZone ==='PT') {
-      this.currentTime = new Date();
-      this.currentTime.setHours(this.currentTime.getHours() - 2 )
+      this.currentTime.setHours(this.currentTime.getHours() - 7 )
     }
     else if (this.timeZone ==='MT') {
-      this.currentTime = new Date();
-      this.currentTime.setHours(this.currentTime.getHours() - 1 )
+      this.currentTime.setHours(this.currentTime.getHours() - 6 )
     }
     else if (this.timeZone ==='CT') {
-      this.currentTime = new Date();
+      this.currentTime.setHours(this.currentTime.getHours() - 5 )
     }
     else if (this.timeZone ==='ET') {
-      this.currentTime = new Date();
-      this.currentTime.setHours(this.currentTime.getHours() + 1 )
+      this.currentTime.setHours(this.currentTime.getHours() - 4 )
     }
   }
 
@@ -95,28 +97,28 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.timer = setInterval(() => this.updateTime(), 1000);
-    switch(this.tzOffset) {
-      case 240:
+    switch(this.tzOffsetHours) {
+      case 4:
         this.timeZone = 'ET';
         this.fullTimeZone = "Eastern Time Zone";
         break;     
-      case 300:
+      case 5:
         this.timeZone = 'CT';
         this.fullTimeZone = "Central Time Zone";
         break;
-      case 360:
+      case 6:
         this.timeZone = 'MT';
         this.fullTimeZone = "Mountain Time Zone";
         break;
-      case 420:
+      case 7:
         this.timeZone = 'PT';
         this.fullTimeZone = "Pacific Time Zone";
         break;
-      case 480:
+      case 8:
         this.timeZone = 'AKT';
         this.fullTimeZone = "Alaska Time Zone";
         break;
-      case 600:
+      case 10:
         this.timeZone = 'HT';
         this.fullTimeZone = "Hawaii-Aleutian Time Zone";
         break;
@@ -125,6 +127,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.timeZone = 'ET';
         this.fullTimeZone = "Eastern Time Zone";
     }
+    this.updateTime();
   }
 
   ngOnDestroy() {
